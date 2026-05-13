@@ -1,0 +1,29 @@
+# Git Ignore for Compliance Certificate Tracker
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node (if using npm in future)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Local environment files
+.env
+.env.local
