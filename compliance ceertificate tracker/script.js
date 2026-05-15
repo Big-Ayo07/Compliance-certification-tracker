@@ -2,53 +2,60 @@ const TODAY = dayjs(); // live date — always current
 
 const RAW = [
   // ── NMDPRA ──
-  { body:"NMDPRA", cat:"Major Category",       title:"Installation and Maintenance Services",       service:"Mechanical Install/Maintenance & Material",                                           expiry:"2025-06-15", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Specialized Category", title:"Facilities & Equipment Installation Services", service:"On-/Offshore Facilities, Process Facilities & Platforms Installation/Upgrade",       expiry:"2025-07-22", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Specialized Category", title:"Facility Maintenance",                         service:"Pipeline Maintenance & Equipment Refurbishment",                                     expiry:"2025-08-10", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Major Category",       title:"Engineering and Technical Services",           service:"Major Mechanical",                                                                   expiry:"2025-05-20", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Major Category",       title:"Equipment and Material Supply Services",       service:"Mechanical Parts — Valves, Nozzles, Flanges, Seals, O-rings, Bolts etc.",          expiry:"2025-09-05", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Specialized Category", title:"Inspection and Certification Services",        service:"Safety Critical Equipment, All Valves (RV, PSV, PCV, PVCV, BDV, ESD, HIPPS etc.)",   expiry:"2025-06-30", rawStatus:"ACTIVE" },
-  { body:"NMDPRA", cat:"Specialized Category", title:"Manpower Supply",                              service:"Administrative, Support & Engineering/Technical Staff Supply",                       expiry:"2025-10-12", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Major Category",       title:"Installation and Maintenance Services",       service:"Mechanical Install/Maintenance & Material",                                           expiry:"2026-07-22", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Specialized Category", title:"Facilities & Equipment Installation Services", service:"On-/Offshore Facilities, Process Facilities & Platforms Installation/Upgrade",       expiry:"2026-07-28", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Specialized Category", title:"Facility Maintenance",                         service:"Pipeline Maintenance & Equipment Refurbishment",                                     expiry:"2026-07-28", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Major Category",       title:"Engineering and Technical Services",           service:"Major Mechanical",                                                                   expiry:"2026-07-23", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Major Category",       title:"Equipment and Material Supply Services",       service:"Mechanical Parts — Valves, Nozzles, Flanges, Seals, O-rings, Bolts etc.",          expiry:"2026-07-23", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Specialized Category", title:"Inspection and Certification Services",        service:"Safety Critical Equipment, All Valves (RV, PSV, PCV, PVCV, BDV, ESD, HIPPS etc.)",   expiry:"2026-08-26", rawStatus:"ACTIVE" },
+  { body:"NMDPRA", cat:"Specialized Category", title:"Manpower Supply",                              service:"Administrative, Support & Engineering/Technical Staff Supply",                       expiry:"2026-07-28", rawStatus:"ACTIVE" },
 
   // ── NUPRC ──
-  { body:"NUPRC",  cat:"Major Category",       title:"Installation and Maintenance",                 service:"Mechanical & Electrical Installation/Maintenance & Materials",                       expiry:"2025-07-08", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Technical Consultancy Services",               service:"Production Operation & Process Maintenance; Facility Inspection & Maintenance",      expiry:"2025-08-15", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Calibration Services",                         service:"Relief/Pressure Safety Valves Certification",                                        expiry:"2025-05-25", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Rehabilitation, Upgrade & Fabrication",        service:"Minor Metal Fabrication & Minor Mechanical",                                         expiry:"2025-09-20", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Facilities Maintenance Services",              service:"Pressure Testing, Leak Detection, Safety Critical Equipment & Valves Certification", expiry:"2025-06-10", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Major Construction Service",                   service:"Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities", expiry:"2025-11-30", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Consultancy Service",                          service:"Nigerian Manpower Supply (Nigerian Professionals only)",                             expiry:"2025-07-18", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Heavy Duty Equipment Supply, Install & Maint", service:"LP/HP Pumps & Valves (12 inches & above)",                                           expiry:"2025-08-25", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Equipment and Material Supply Services",       service:"Heating & Cooling Equipment, Valves, Nozzles, Expanders & Flanges",                  expiry:"2025-09-14", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Waste Management Services",                    service:"Tank Vessel Cleaning",                                                               expiry:"2025-10-05", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Offshore Pipeline Laying",                     service:"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",                    expiry:"2025-12-15", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Onshore Pipeline Laying",                      service:"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",                    expiry:"2025-05-30", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Installation and Maintenance",                 service:"Mechanical & Electrical Installation/Maintenance & Materials",                       expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Technical Consultancy Services",               service:"Production Operation & Process Maintenance; Facility Inspection & Maintenance",      expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Calibration Services",                         service:"Relief/Pressure Safety Valves Certification",                                        expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Rehabilitation, Upgrade & Fabrication",        service:"Minor Metal Fabrication & Minor Mechanical",                                         expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Facilities Maintenance Services",              service:"Pressure Testing, Leak Detection, Safety Critical Equipment & Valves Certification", expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Major Construction Service",                   service:"Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities", expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Consultancy Service",                          service:"Nigerian Manpower Supply (Nigerian Professionals only)",                             expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Heavy Duty Equipment Supply, Install & Maint", service:"LP/HP Pumps & Valves (12 inches & above)",                                           expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Equipment and Material Supply Services",       service:"Heating & Cooling Equipment, Valves, Nozzles, Expanders & Flanges",                  expiry:"2027-02-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Waste Management Services",                    service:"Tank Vessel Cleaning",                                                               expiry:"2026-07-28", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Offshore Pipeline Laying",                     service:"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",                    expiry:"2026-08-26", rawStatus:"ACTIVE" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Onshore Pipeline Laying",                      service:"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",                    expiry:"2026-08-21", rawStatus:"ACTIVE" },
+
+    // ── NCDMB ──
+  { body:"NCDMB",  cat:"", title:"",                      service:"",                    expiry:"", rawStatus:"" },
 
   // ── NCEC ──
-  { body:"NCEC",   cat:"—",                    title:"Procurement and Supply",                       service:"—",                                                                              expiry:"2025-06-20", rawStatus:"ACTIVE" },
-  { body:"NCEC",   cat:"—",                    title:"Construction and Moveable Equipment",          service:"—",                                                                              expiry:"2025-07-25", rawStatus:"ACTIVE" },
-  { body:"NCEC",   cat:"—",                    title:"Consultancy Service",                          service:"—",                                                                              expiry:"2025-08-30", rawStatus:"ACTIVE" },
+  { body:"NCEC",   cat:"—",                    title:"Procurement and Supply",                       service:"—",                                                                              expiry:"2026-12-05", rawStatus:"ACTIVE" },
+  { body:"NCEC",   cat:"—",                    title:"Construction and Moveable Equipment",          service:"—",                                                                              expiry:"", rawStatus:"PROCESSING" },
+  { body:"NCEC",   cat:"—",                    title:"Consultancy Service",                          service:"—",                                                                              expiry:"2026-11-26", rawStatus:"ACTIVE" },
 
   // ── NOGIC JQS ──
-  { body:"NOGIC JQS", cat:"—",                 title:"JQS Prequalification",                         service:"—",                                                                              expiry:"2025-09-10", rawStatus:"ACTIVE" },
+  { body:"NOGIC JQS", cat:"—",                 title:"",                         service:"—",                                                                              expiry:"2026-09-11", rawStatus:"ACTIVE" },
 
   // ── COREN ──
-  { body:"COREN",  cat:"—",                    title:"COREN Registration",                           service:"—",                                                                              expiry:"2025-10-15", rawStatus:"ACTIVE" },
+  { body:"COREN",  cat:"—",                    title:"",                           service:"—",                                                                              expiry:"2026-12-01", rawStatus:"ACTIVE" },
 
   // ── ITF ──
-  { body:"ITF",    cat:"—",                    title:"ITF Compliance Certificate",                   service:"—",                                                                              expiry:"2025-11-20", rawStatus:"ACTIVE" },
+  { body:"ITF",    cat:"—",                    title:"",                   service:"—",                                                                              expiry:"2026-12-31", rawStatus:"ACTIVE" },
 
   // ── NSITF ──
-  { body:"NSITF",  cat:"—",                    title:"NSITF Compliance Certificate",                 service:"—",                                                                              expiry:"2025-12-10", rawStatus:"ACTIVE" },
+  { body:"NSITF",  cat:"—",                    title:"NSITF Compliance Certificate",                 service:"—",                                                                              expiry:"2026-12-31", rawStatus:"ACTIVE" },
 
   // ── RECRUITERS PERMIT ──
-  { body:"RECRUITERS PERMIT", cat:"—",         title:"Recruiters Permit",                            service:"—",                                                                              expiry:"2026-01-05", rawStatus:"ACTIVE" },
+  { body:"RECRUITERS PERMIT", cat:"—",         title:"Recruiters Permit",                            service:"—",                                                                              expiry:"2026-03-12", rawStatus:"EXPIRED" },
 
   // ── TCC ──
-  { body:"TCC",    cat:"—",                    title:"Tax Clearance Certificate",                    service:"—",                                                                              expiry:"2026-02-14", rawStatus:"ACTIVE" },
+  { body:"TCC",    cat:"—",                    title:"Tax Clearance Certificate",                    service:"—",                                                                              expiry:"2025-12-31", rawStatus:"EXPIRED" },
 
   // ── GROUP LIFE INSURANCE ──
-  { body:"GROUP LIFE INSURANCE", cat:"—",      title:"Group Life Insurance Policy",                  service:"—",                                                                              expiry:"2026-03-20", rawStatus:"ACTIVE" },
+  { body:"GROUP LIFE INSURANCE", cat:"—",      title:"Group Life Insurance Policy",                  service:"—",                                                                              expiry:"2027-03-01", rawStatus:"ACTIVE" },
+
+   // ── PENCOM──
+  { body:"PENCOM", cat:"—",      title:"",                  service:"—",                                                                              expiry:"", rawStatus:"" },
+
 ];
 
 function daysLeft(d) {
