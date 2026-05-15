@@ -12,11 +12,11 @@ const RAW = [
 
   // ── NUPRC ──
   { body:"NUPRC",  cat:"Major Category",       title:"Installation and Maintenance",                 service:"Mechanical & Electrical Installation/Maintenance & Materials",                       expiry:"2027-02-26", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Technical Consultancy Services",               service:"Production Operation & Process Maintenance; Facility Inspection & Maintenance",      expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Technical Consultancy Services",               service:"Production Operation & Process Maintenance; Facility Inspection & Maintenance",      expiry:"2026-05-14", rawStatus:"ACTIVE" },
   { body:"NUPRC",  cat:"Specialized Category", title:"Calibration Services",                         service:"Relief/Pressure Safety Valves Certification",                                        expiry:"2027-02-26", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Major Category",       title:"Rehabilitation, Upgrade & Fabrication",        service:"Minor Metal Fabrication & Minor Mechanical",                                         expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Major Category",       title:"Rehabilitation, Upgrade & Fabrication",        service:"Minor Metal Fabrication & Minor Mechanical",                                         expiry:"2027-05-12", rawStatus:"ACTIVE" },
   { body:"NUPRC",  cat:"Specialized Category", title:"Facilities Maintenance Services",              service:"Pressure Testing, Leak Detection, Safety Critical Equipment & Valves Certification", expiry:"2027-02-26", rawStatus:"ACTIVE" },
-  { body:"NUPRC",  cat:"Specialized Category", title:"Major Construction Service",                   service:"Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities", expiry:"2026-04-29", rawStatus:"PROCESSING" },
+  { body:"NUPRC",  cat:"Specialized Category", title:"Major Construction Service",                   service:"Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities", expiry:"2027-05-14", rawStatus:"ACTIVE" },
   { body:"NUPRC",  cat:"Major Category",       title:"Consultancy Service",                          service:"Nigerian Manpower Supply (Nigerian Professionals only)",                             expiry:"2027-02-26", rawStatus:"ACTIVE" },
   { body:"NUPRC",  cat:"Specialized Category", title:"Heavy Duty Equipment Supply, Install & Maint", service:"LP/HP Pumps & Valves (12 inches & above)",                                           expiry:"2027-02-26", rawStatus:"ACTIVE" },
   { body:"NUPRC",  cat:"Major Category",       title:"Equipment and Material Supply Services",       service:"Heating & Cooling Equipment, Valves, Nozzles, Expanders & Flanges",                  expiry:"2027-02-26", rawStatus:"ACTIVE" },
