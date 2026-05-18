@@ -45,10 +45,12 @@ const RAW = [
   { body:"NSITF",  cat:"—",                    title:"NSITF Compliance Certificate",                 service:"—",                                                                              expiry:"2026-12-31", rawStatus:"ACTIVE" },
 
   // ── RECRUITERS PERMIT ──
-  { body:"RECRUITERS PERMIT", cat:"—",         title:"Recruiters Permit",                            service:"—",                                                                              expiry:"2026-03-12", rawStatus:"EXPIRED" },
+  { body:"DOMESTIC RECRUITERS PERMIT", cat:"—",         title:"Domestic Recruiters Permit",                            service:"—",                                                                              expiry:"2027-03-12", rawStatus:"ACTIVE" },
+ { body:"INTERNATIONAL RECRUITERS PERMIT", cat:"—",         title:"International Recruiters Permit",                            service:"—",                                                                              expiry:"2018-03-12", rawStatus:"EXPIRED" },
 
+  
   // ── TCC ──
-  { body:"TCC",    cat:"—",                    title:"Tax Clearance Certificate",                    service:"—",                                                                              expiry:"2026-12-31", rawStatus:"EXPIRED" },
+  { body:"TCC",    cat:"—",                    title:"Tax Clearance Certificate",                    service:"—",                                                                              expiry:"2026-12-31", rawStatus:"ACTIVE" },
 
   // ── GROUP LIFE INSURANCE ──
   { body:"GROUP LIFE INSURANCE", cat:"—",      title:"Group Life Insurance Policy",                  service:"—",                                                                              expiry:"2027-03-01", rawStatus:"ACTIVE" },
