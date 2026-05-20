@@ -1,1 +1,243 @@
-{"company":"AIRYOLK Nigeria Limited","emailjs":{"serviceId":"service_zq4syrg","templateId":"template_jebn2le","publicKey":"AtzSPbBSgWfsW95Fw","recipients":[]},"certifications":[{"body":"NMDPRA","cat":"Major Category","title":"Installation and Maintenance Services","service":"Mechanical Install/Maintenance & Material","rawStatus":"ACTIVE","expiry":"2026-07-22"},{"body":"NMDPRA","cat":"Specialized Category","title":"Facilities & Equipment Installation Services","service":"On-/Offshore Facilities, Process Facilities & Platforms Installation/Upgrade","rawStatus":"ACTIVE","expiry":"2026-07-28"},{"body":"NMDPRA","cat":"Specialized Category","title":"Facility Maintenance","service":"Pipeline Maintenance & Equipment Refurbishment","rawStatus":"ACTIVE","expiry":"2026-07-28"},{"body":"NMDPRA","cat":"Major Category","title":"Engineering and Technical Services","service":"Major Mechanical","rawStatus":"ACTIVE","expiry":"2026-07-23"},{"body":"NMDPRA","cat":"Major Category","title":"Equipment and Material Supply Services","service":"Mechanical Parts — Valves, Nozzles, Flanges, Seals, O-rings, Bolts etc.","rawStatus":"ACTIVE","expiry":"2026-07-23"},{"body":"NMDPRA","cat":"Specialized Category","title":"Inspection and Certification Services","service":"Safety Critical Equipment, All Valves (RV, PSV, PCV, PVCV, BDV, ESD, HIPPS etc.)","rawStatus":"ACTIVE","expiry":"2026-08-26"},{"body":"NMDPRA","cat":"Specialized Category","title":"Manpower Supply","service":"Administrative, Support & Engineering/Technical Staff Supply","rawStatus":"ACTIVE","expiry":"2026-07-28"},{"body":"NUPRC","cat":"Major Category","title":"Installation and Maintenance","service":"Mechanical & Electrical Installation/Maintenance & Materials","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Major Category","title":"Technical Consultancy Services","service":"Production Operation & Process Maintenance; Facility Inspection & Maintenance","rawStatus":"PROCESSING","expiry":"2026-04-29"},{"body":"NUPRC","cat":"Specialized Category","title":"Calibration Services","service":"Relief/Pressure Safety Valves Certification","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Major Category","title":"Rehabilitation, Upgrade & Fabrication","service":"Minor Metal Fabrication & Minor Mechanical","rawStatus":"PROCESSING","expiry":"2026-04-29"},{"body":"NUPRC","cat":"Specialized Category","title":"Facilities Maintenance Services","service":"Pressure Testing, Leak Detection, Safety Critical Equipment & Valves Certification","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Specialized Category","title":"Major Construction Service","service":"Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities","rawStatus":"PROCESSING","expiry":"2026-04-29"},{"body":"NUPRC","cat":"Major Category","title":"Consultancy Service","service":"Nigerian Manpower Supply (Nigerian Professionals only)","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Specialized Category","title":"Heavy Duty Equipment Supply, Install & Maint","service":"LP/HP Pumps & Valves (12 inches & above)","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Major Category","title":"Equipment and Material Supply Services","service":"Heating & Cooling Equipment, Valves, Nozzles, Expanders & Flanges","rawStatus":"ACTIVE","expiry":"2027-02-26"},{"body":"NUPRC","cat":"Specialized Category","title":"Waste Management Services","service":"Tank Vessel Cleaning","rawStatus":"ACTIVE","expiry":"2026-07-28"},{"body":"NUPRC","cat":"Specialized Category","title":"Offshore Pipeline Laying","service":"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction","rawStatus":"ACTIVE","expiry":"2026-08-26"},{"body":"NUPRC","cat":"Specialized Category","title":"Onshore Pipeline Laying","service":"Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction","rawStatus":"ACTIVE","expiry":"2026-08-21"},{"body":"NCEC","cat":"—","title":"Procurement and Supply","service":"—","rawStatus":"ACTIVE","expiry":"2026-12-05"},{"body":"NCEC","cat":"—","title":"Construction and Moveable Equipment","service":"—","rawStatus":"PROCESSING","expiry":null},{"body":"NCEC","cat":"—","title":"Consultancy Service","service":"—","rawStatus":"ACTIVE","expiry":"2026-11-26"},{"body":"NOGIC JQS","cat":"—","title":"JQS Prequalification","service":"—","rawStatus":"ACTIVE","expiry":"2026-09-11"},{"body":"COREN","cat":"—","title":"COREN Registration","service":"—","rawStatus":"ACTIVE","expiry":"2026-12-01"},{"body":"ITF","cat":"—","title":"ITF Compliance Certificate","service":"—","rawStatus":"ACTIVE","expiry":"2026-12-31"},{"body":"NSITF","cat":"—","title":"NSITF Compliance Certificate","service":"—","rawStatus":"ACTIVE","expiry":"2026-12-31"},{"body":"RECRUITERS PERMIT","cat":"—","title":"Recruiters Permit","service":"—","rawStatus":"ACTIVE","expiry":"2026-03-12"},{"body":"TCC","cat":"—","title":"Tax Clearance Certificate","service":"—","rawStatus":"EXPIRED","expiry":"2025-12-31"},{"body":"GROUP LIFE INSURANCE","cat":"—","title":"Group Life Insurance Policy","service":"—","rawStatus":"ACTIVE","expiry":"2027-03-01"}]}
+{
+  "company": "AIRYOLK Nigeria Limited",
+  "emailjs": {
+    "serviceId": "service_zq4syrg",
+    "templateId": "template_jebn2le",
+    "publicKey": "AtzSPbBSgWfsW95Fw",
+    "recipients": []
+  },
+  "certifications": [
+    {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Installation and Maintenance Services",
+      "service": "Mechanical Install/Maintenance & Material",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-22"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Specialized Category",
+      "title": "Facilities & Equipment Installation Services",
+      "service": "On-/Offshore Facilities, Process Facilities & Platforms Installation/Upgrade",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-28"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Specialized Category",
+      "title": "Facility Maintenance",
+      "service": "Pipeline Maintenance & Equipment Refurbishment",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-28"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Engineering and Technical Services",
+      "service": "Major Mechanical",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-23"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Equipment and Material Supply Services",
+      "service": "Mechanical Parts — Valves, Nozzles, Flanges, Seals, O-rings, Bolts etc.",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-23"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Specialized Category",
+      "title": "Inspection and Certification Services",
+      "service": "Safety Critical Equipment, All Valves (RV, PSV, PCV, PVCV, BDV, ESD, HIPPS etc.)",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-08-26"
+    },
+    {
+      "body": "NMDPRA",
+      "cat": "Specialized Category",
+      "title": "Manpower Supply",
+      "service": "Administrative, Support & Engineering/Technical Staff Supply",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-28"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Major Category",
+      "title": "Installation and Maintenance",
+      "service": "Mechanical & Electrical Installation/Maintenance & Materials",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Major Category",
+      "title": "Technical Consultancy Services",
+      "service": "Production Operation & Process Maintenance; Facility Inspection & Maintenance",
+      "rawStatus": "PROCESSING",
+      "expiry": "2026-04-29"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Calibration Services",
+      "service": "Relief/Pressure Safety Valves Certification",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Major Category",
+      "title": "Rehabilitation, Upgrade & Fabrication",
+      "service": "Minor Metal Fabrication & Minor Mechanical",
+      "rawStatus": "PROCESSING",
+      "expiry": "2026-04-29"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Facilities Maintenance Services",
+      "service": "Pressure Testing, Leak Detection, Safety Critical Equipment & Valves Certification",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Major Construction Service",
+      "service": "Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities",
+      "rawStatus": "PROCESSING",
+      "expiry": "2026-04-29"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Major Category",
+      "title": "Consultancy Service",
+      "service": "Nigerian Manpower Supply (Nigerian Professionals only)",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Heavy Duty Equipment Supply, Install & Maint",
+      "service": "LP/HP Pumps & Valves (12 inches & above)",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Major Category",
+      "title": "Equipment and Material Supply Services",
+      "service": "Heating & Cooling Equipment, Valves, Nozzles, Expanders & Flanges",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-02-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Waste Management Services",
+      "service": "Tank Vessel Cleaning",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-07-28"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Offshore Pipeline Laying",
+      "service": "Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-08-26"
+    },
+    {
+      "body": "NUPRC",
+      "cat": "Specialized Category",
+      "title": "Onshore Pipeline Laying",
+      "service": "Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-08-21"
+    },
+    {
+      "body": "NCEC",
+      "cat": "—",
+      "title": "Procurement and Supply",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-12-05"
+    },
+    {
+      "body": "NCEC",
+      "cat": "—",
+      "title": "Construction and Moveable Equipment",
+      "service": "—",
+      "rawStatus": "PROCESSING",
+      "expiry": null
+    },
+    {
+      "body": "NCEC",
+      "cat": "—",
+      "title": "Consultancy Service",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-11-26"
+    },
+    {
+      "body": "NOGIC JQS",
+      "cat": "—",
+      "title": "JQS Prequalification",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-09-11"
+    },
+    {
+      "body": "COREN",
+      "cat": "—",
+      "title": "COREN Registration",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-12-01"
+    },
+    {
+      "body": "ITF",
+      "cat": "—",
+      "title": "ITF Compliance Certificate",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-12-31"
+    },
+    {
+      "body": "NSITF",
+      "cat": "—",
+      "title": "NSITF Compliance Certificate",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-12-31"
+    },
+    {
+      "body": "RECRUITERS PERMIT",
+      "cat": "—",
+      "title": "Recruiters Permit",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-03-12"
+    },
+    {
+      "body": "TCC",
+      "cat": "—",
+      "title": "Tax Clearance Certificate",
+      "service": "—",
+      "rawStatus": "EXPIRED",
+      "expiry": "2025-12-31"
+    },
+    {
+      "body": "GROUP LIFE INSURANCE",
+      "cat": "—",
+      "title": "Group Life Insurance Policy",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-03-01"
+    }
+  ]
+}
