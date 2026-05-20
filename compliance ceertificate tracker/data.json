@@ -76,8 +76,8 @@
       "cat": "Major Category",
       "title": "Technical Consultancy Services",
       "service": "Production Operation & Process Maintenance; Facility Inspection & Maintenance",
-      "rawStatus": "PROCESSING",
-      "expiry": "2026-04-29"
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-05-14"
     },
     {
       "body": "NUPRC",
@@ -92,8 +92,8 @@
       "cat": "Major Category",
       "title": "Rehabilitation, Upgrade & Fabrication",
       "service": "Minor Metal Fabrication & Minor Mechanical",
-      "rawStatus": "PROCESSING",
-      "expiry": "2026-04-29"
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-05-12"
     },
     {
       "body": "NUPRC",
@@ -108,8 +108,8 @@
       "cat": "Specialized Category",
       "title": "Major Construction Service",
       "service": "Mechanical Engineering — Installation/Upgrade of On-/Offshore Production Facilities",
-      "rawStatus": "PROCESSING",
-      "expiry": "2026-04-29"
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-05-14"
     },
     {
       "body": "NUPRC",
@@ -216,20 +216,28 @@
       "expiry": "2026-12-31"
     },
     {
-      "body": "RECRUITERS PERMIT",
+      "body": "DOMESTIC RECRUITERS PERMIT",
       "cat": "—",
       "title": "Recruiters Permit",
       "service": "—",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-03-12"
+      "expiry": "2027-03-12"
+    },
+     {
+      "body": "INTERNATIONAL RECRUITERS PERMIT",
+      "cat": "—",
+      "title": "Recruiters Permit",
+      "service": "—",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-03-12"
     },
     {
       "body": "TCC",
       "cat": "—",
       "title": "Tax Clearance Certificate",
       "service": "—",
-      "rawStatus": "EXPIRED",
-      "expiry": "2025-12-31"
+      "rawStatus": "ACTIVE",
+      "expiry": "2026-12-31"
     },
     {
       "body": "GROUP LIFE INSURANCE",
