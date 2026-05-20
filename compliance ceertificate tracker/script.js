@@ -369,7 +369,7 @@ document.getElementById("file-upload").addEventListener("change", function (e) {
             if (ch === '"') {
               if (inQuote && line[i + 1] === '"') { cur += '"'; i++; } // escaped quote
               else inQuote = !inQuote;
-            } else if (ch === ',' && !inQuote) {
+            } else if (ch === ',' && !inQuote) {34
               fields.push(cur.trim()); cur = "";
             } else {
               cur += ch;
