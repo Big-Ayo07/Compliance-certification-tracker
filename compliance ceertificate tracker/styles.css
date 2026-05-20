@@ -171,16 +171,16 @@ body {
   color: #cbd5e1;
 }
 
-/* Modal */
-.map-row { display:flex; align-items:center; gap:10px; }
-.map-label { font-size:13px; font-weight:500; width:130px; flex-shrink:0; color:#cbd5e1; }
+/* ── MODAL ── */
+.map-row { display: flex; align-items: center; gap: 10px; }
+.map-label { font-size: 13px; font-weight: 500; width: 130px; flex-shrink: 0; color: #cbd5e1; }
 .map-select {
-  flex:1; padding:6px 10px; border-radius:7px;
-  border:1px solid #1e2d4a; font-size:13px;
-  background:#0d1526; color:#e2e8f0; outline:none;
+  flex: 1; padding: 6px 10px; border-radius: 7px;
+  border: 1px solid #1e2d4a; font-size: 13px;
+  background: #0d1526; color: #e2e8f0; outline: none;
 }
 
-/* SEARCH */
+/* ── SEARCH ── */
 .search-wrap { position: relative; }
 .search-wrap input {
   padding: 6px 12px 6px 30px;
@@ -204,7 +204,7 @@ body {
   pointer-events: none;
 }
 
-/* TABLE */
+/* ── TABLE ── */
 .table-wrap {
   border: 1px solid #1a2540;
   border-radius: 10px;
@@ -232,12 +232,12 @@ td {
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #0f1e3d; }
 
-.body-col { font-weight: 700; font-size: 11px; color: #3b82f6; letter-spacing:.02em; }
+.body-col  { font-weight: 700; font-size: 11px; color: #3b82f6; letter-spacing: .02em; }
 .title-col { font-weight: 500; color: #cbd5e1; }
 .cat-col   { font-size: 12px; color: #475569; }
 .date-col  { font-size: 12px; color: #64748b; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-/* BADGES */
+/* ── BADGES ── */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -255,16 +255,16 @@ tr:hover td { background: #0f1e3d; }
 .b-proc     { background: rgba(99,102,241,.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,.25); }
 .b-nodate   { background: rgba(100,116,139,.1); color: #64748b; border: 1px solid rgba(100,116,139,.2); }
 
-.days-expired  { color: #f87171; font-weight: 600; font-size:12px; font-variant-numeric: tabular-nums; }
-.days-critical { color: #fbbf24; font-weight: 600; font-size:12px; font-variant-numeric: tabular-nums; }
-.days-warning  { color: #facc15; font-weight: 600; font-size:12px; font-variant-numeric: tabular-nums; }
-.days-ok       { color: #4ade80; font-weight: 600; font-size:12px; font-variant-numeric: tabular-nums; }
-.days-proc     { color: #a5b4fc; font-weight: 600; font-size:12px; font-variant-numeric: tabular-nums; }
-.days-nodate   { color: #334155; font-weight: 500; font-size:12px; }
+.days-expired  { color: #f87171; font-weight: 600; font-size: 12px; font-variant-numeric: tabular-nums; }
+.days-critical { color: #fbbf24; font-weight: 600; font-size: 12px; font-variant-numeric: tabular-nums; }
+.days-warning  { color: #facc15; font-weight: 600; font-size: 12px; font-variant-numeric: tabular-nums; }
+.days-ok       { color: #4ade80; font-weight: 600; font-size: 12px; font-variant-numeric: tabular-nums; }
+.days-proc     { color: #a5b4fc; font-weight: 600; font-size: 12px; font-variant-numeric: tabular-nums; }
+.days-nodate   { color: #334155; font-weight: 500; font-size: 12px; }
 
-.empty-cell { text-align: center; color: #334155; padding: 3rem !important; font-size:13px; }
+.empty-cell { text-align: center; color: #334155; padding: 3rem !important; font-size: 13px; }
 
-/* LEGEND */
+/* ── LEGEND ── */
 .legend {
   display: flex;
   gap: 16px;
@@ -278,6 +278,7 @@ tr:hover td { background: #0f1e3d; }
 .legend span { display: flex; align-items: center; gap: 6px; }
 .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .metrics { grid-template-columns: repeat(3, 1fr); }
 }
