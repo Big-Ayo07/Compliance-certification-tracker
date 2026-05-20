@@ -40,16 +40,38 @@ let searchQ = "";
 
 // ── EMAILJS CONFIG (loaded from data.json) ───────────────────
 let ejsConfig = { serviceId: "", templateId: "", publicKey: "" };
+let emailjsInitialized = false;
 
 function initEmailJS(cfg) {
-  ejsConfig = cfg;
-  emailjs.init({ publicKey: cfg.publicKey });
-  // Load saved recipients from localStorage, fall back to data.json list
-  const saved = localStorage.getItem("alert_recipients");
-  recipients = saved ? JSON.parse(saved) : (cfg.recipients || []);
+  if (!cfg || !cfg.publicKey) {
+    console.warn("EmailJS config incomplete - email alerts will be disabled");
+    return false;
+  }
+  
+  try {
+    ejsConfig = cfg;
+    emailjs.init({ publicKey: cfg.publicKey });
+    emailjsInitialized = true;
+    
+    // Load saved recipients from localStorage, fall back to data.json list
+    const saved = localStorage.getItem("alert_recipients");
+    recipients = saved ? JSON.parse(saved) : (cfg.recipients || []);
+    return true;
+  } catch (err) {
+    console.error("Failed to initialize EmailJS:", err);
+    emailjsInitialized = false;
+    return false;
+  }
 }
 
 let recipients = []; // array of email strings
+
+// ── EMAIL VALIDATION ──────────────────────────────────────────
+
+function isValidEmail(email) {
+  // RFC 5322 simplified email validation
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
 
 // ── EMAIL SEND ───────────────────────────────────────────────
 
@@ -89,6 +111,12 @@ function buildAlertPayload() {
 }
 
 function sendAlertEmail() {
+  // Check EmailJS initialization
+  if (!emailjsInitialized || !ejsConfig.serviceId || !ejsConfig.templateId) {
+    showBanner("⚠️ Email service not configured. Please check your settings.", "error");
+    return;
+  }
+
   if (!recipients.length) {
     openEmailSettingsModal(() => {
       if (recipients.length) sendAlertEmail();
@@ -97,33 +125,64 @@ function sendAlertEmail() {
   }
 
   const payload = buildAlertPayload();
-  if (!payload) return;
-
-  // Debug — check what recipients look like before sending
-  console.log("Recipients:", JSON.stringify(recipients));
-  console.log("First recipient:", JSON.stringify(recipients[0]));
+  if (!payload) {
+    showBanner("⚠️ No urgent certifications to alert about.", "error");
+    return;
+  }
 
   const btn = document.getElementById("email-btn");
+  const originalContent = btn.textContent;
   btn.textContent = "Sending…";
   btn.classList.add("dim");
+  btn.disabled = true;
 
-  const sends = recipients.map(to => {
+  const validRecipients = recipients.filter(r => isValidEmail(r));
+  
+  if (!validRecipients.length) {
+    showBanner("⚠️ No valid email addresses configured.", "error");
+    btn.textContent = originalContent;
+    btn.classList.remove("dim");
+    btn.disabled = false;
+    return;
+  }
+
+  const sends = validRecipients.map(to => {
     const cleanTo = to.trim();
-    console.log("Sending to:", JSON.stringify(cleanTo));
     return emailjs.send(ejsConfig.serviceId, ejsConfig.templateId, {
       to_email: cleanTo,
       subject:  payload.subject,
       body:     payload.body,
+    }).catch(err => {
+      // Return error but don't throw - allow other emails to send
+      return Promise.reject(err);
     });
   });
 
-  Promise.all(sends)
-    .then(() => {
-      showBanner(`✅ Alert sent to ${recipients.length} recipient(s).`, "success");
+  Promise.allSettled(sends)
+    .then(results => {
+      const succeeded = results.filter(r => r.status === "fulfilled").length;
+      const failed = results.filter(r => r.status === "rejected").length;
+
+      btn.textContent = originalContent;
+      btn.classList.remove("dim");
+      btn.disabled = false;
+
+      if (succeeded > 0) {
+        const msg = failed > 0
+          ? `✅ Sent to ${succeeded}/${validRecipients.length} recipients. ${failed} failed.`
+          : `✅ Alert sent to ${succeeded} recipient(s).`;
+        showBanner(msg, succeeded === validRecipients.length ? "success" : "info");
+      } else {
+        showBanner(`⚠️ Failed to send alerts. Please try again.`, "error");
+      }
+      
       render();
     })
     .catch(err => {
-      showBanner(`⚠️ Failed to send: ${err.text || err.message || "Unknown error"}`, "error");
+      btn.textContent = originalContent;
+      btn.classList.remove("dim");
+      btn.disabled = false;
+      showBanner(`⚠️ Error sending alerts: ${err.message || "Unknown error"}`, "error");
       render();
     });
 }
@@ -160,14 +219,18 @@ function render() {
   // Email button
   const eb = document.getElementById("email-btn");
   const urgent = records.filter(r => ["expired", "critical"].includes(r.status));
-  if (urgent.length) {
+  if (urgent.length && emailjsInitialized) {
     eb.classList.remove("dim");
     eb.textContent = `📧 Email alert (${urgent.length})`;
     eb.onclick = sendAlertEmail;
+    eb.disabled = false;
   } else {
     eb.classList.add("dim");
-    eb.innerHTML = "📧 Email alert";
+    eb.innerHTML = urgent.length === 0 
+      ? "📧 Email alert" 
+      : "📧 Email alert (unconfigured)";
     eb.onclick = null;
+    eb.disabled = true;
   }
 
   // Apply filter + search
@@ -369,7 +432,7 @@ document.getElementById("file-upload").addEventListener("change", function (e) {
             if (ch === '"') {
               if (inQuote && line[i + 1] === '"') { cur += '"'; i++; } // escaped quote
               else inQuote = !inQuote;
-            } else if (ch === ',' && !inQuote) {34
+            } else if (ch === ',' && !inQuote) {
               fields.push(cur.trim()); cur = "";
             } else {
               cur += ch;
@@ -451,7 +514,7 @@ let _onSettingsSaved = null;
 function openEmailSettingsModal(onSave) {
   _onSettingsSaved = onSave || null;
   const overlay = document.getElementById("email-modal-overlay");
-  document.getElementById("recipients-input").value = recipients.join(", ");
+  document.getElementById("recipients-input").value = (recipients || []).join(", ");
   overlay.style.display = "flex";
 }
 
@@ -465,10 +528,21 @@ document.getElementById("email-modal-cancel").addEventListener("click", () => {
 
 document.getElementById("email-modal-save").addEventListener("click", () => {
   const raw = document.getElementById("recipients-input").value;
-  recipients = raw.split(",").map(s => s.trim()).filter(s => s.includes("@"));
+  const newRecipients = raw
+    .split(",")
+    .map(s => s.trim())
+    .filter(s => s && isValidEmail(s));
+  
+  if (!newRecipients.length) {
+    showBanner("⚠️ Please enter at least one valid email address.", "error");
+    return;
+  }
+
+  recipients = newRecipients;
   localStorage.setItem("alert_recipients", JSON.stringify(recipients));
   document.getElementById("email-modal-overlay").style.display = "none";
   showBanner(`✅ ${recipients.length} recipient(s) saved.`, "success");
+  render();
   if (_onSettingsSaved) _onSettingsSaved();
 });
 
@@ -479,7 +553,12 @@ fetch("data.json")
     return res.json();
   })
   .then(data => {
-    if (data.emailjs) initEmailJS(data.emailjs);
+    if (data.emailjs) {
+      const initSuccess = initEmailJS(data.emailjs);
+      if (!initSuccess) {
+        console.warn("Email alerts disabled due to configuration issues");
+      }
+    }
     RAW = data.certifications;
     RAW.forEach((r, i) => records.push({ ...r, id: i, status: computeStatus(r) }));
     render();
