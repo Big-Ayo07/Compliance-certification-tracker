@@ -1,10 +1,10 @@
 {
   "company": "AIRYOLK Nigeria Limited",
   "emailjs": {
-    "serviceId": "service_zq4syrg",
+    "serviceId":  "service_zq4syrg",
     "templateId": "template_jebn2le",
-    "publicKey": "AtzSPbBSgWfsW95Fw",
-    "recipients": []
+    "publicKey":  "AtzSPbBSgWfsW95Fw",
+    "recipients": ["compliance@airyolk.com"]
   },
   "certifications": [
     {
@@ -216,7 +216,7 @@
       "expiry": "2026-12-31"
     },
     {
-      "body": "DOMESTIC RECRUITERS PERMIT",
+      "body": "RECRUITERS PERMIT",
       "cat": "—",
       "title": "Recruiters Permit",
       "service": "—",
@@ -229,7 +229,7 @@
       "title": "Recruiters Permit",
       "service": "—",
       "rawStatus": "ACTIVE",
-      "expiry": "2027-03-12"
+      "expiry": "2018-03-12"
     },
     {
       "body": "TCC",
