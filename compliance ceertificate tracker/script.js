@@ -37,41 +37,21 @@ let RAW = [];
 
 let activeFilter = "all";
 let searchQ = "";
+let sortKey = "expiry";   // default sort column
+let sortDir = "asc";      // "asc" | "desc"
 
 // ── EMAILJS CONFIG (loaded from data.json) ───────────────────
 let ejsConfig = { serviceId: "", templateId: "", publicKey: "" };
-let emailjsInitialized = false;
 
 function initEmailJS(cfg) {
-  if (!cfg || !cfg.publicKey) {
-    console.warn("EmailJS config incomplete - email alerts will be disabled");
-    return false;
-  }
-  
-  try {
-    ejsConfig = cfg;
-    emailjs.init({ publicKey: cfg.publicKey });
-    emailjsInitialized = true;
-    
-    // Load saved recipients from localStorage, fall back to data.json list
-    const saved = localStorage.getItem("alert_recipients");
-    recipients = saved ? JSON.parse(saved) : (cfg.recipients || []);
-    return true;
-  } catch (err) {
-    console.error("Failed to initialize EmailJS:", err);
-    emailjsInitialized = false;
-    return false;
-  }
+  ejsConfig = cfg;
+  emailjs.init({ publicKey: cfg.publicKey });
+  // Load saved recipients from localStorage, fall back to data.json list
+  const saved = localStorage.getItem("alert_recipients");
+  recipients = saved ? JSON.parse(saved) : (cfg.recipients || []);
 }
 
 let recipients = []; // array of email strings
-
-// ── EMAIL VALIDATION ──────────────────────────────────────────
-
-function isValidEmail(email) {
-  // RFC 5322 simplified email validation
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-}
 
 // ── EMAIL SEND ───────────────────────────────────────────────
 
@@ -111,12 +91,6 @@ function buildAlertPayload() {
 }
 
 function sendAlertEmail() {
-  // Check EmailJS initialization
-  if (!emailjsInitialized || !ejsConfig.serviceId || !ejsConfig.templateId) {
-    showBanner("⚠️ Email service not configured. Please check your settings.", "error");
-    return;
-  }
-
   if (!recipients.length) {
     openEmailSettingsModal(() => {
       if (recipients.length) sendAlertEmail();
@@ -125,66 +99,44 @@ function sendAlertEmail() {
   }
 
   const payload = buildAlertPayload();
-  if (!payload) {
-    showBanner("⚠️ No urgent certifications to alert about.", "error");
-    return;
-  }
+  if (!payload) return;
 
   const btn = document.getElementById("email-btn");
-  const originalContent = btn.textContent;
   btn.textContent = "Sending…";
   btn.classList.add("dim");
-  btn.disabled = true;
 
-  const validRecipients = recipients.filter(r => isValidEmail(r));
-  
+  // Clean and validate each address
+  const validRecipients = recipients
+    .map(r => r.trim().replace(/[,;]+$/, ''))  // strip trailing commas/semicolons
+    .filter(r => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r)); // strict email format check
+
   if (!validRecipients.length) {
-    showBanner("⚠️ No valid email addresses configured.", "error");
-    btn.textContent = originalContent;
-    btn.classList.remove("dim");
-    btn.disabled = false;
+    showBanner("⚠️ No valid recipient addresses found. Please check your recipients list.", "error");
+    render();
     return;
   }
 
-  const sends = validRecipients.map(to => {
-    const cleanTo = to.trim();
-    return emailjs.send(ejsConfig.serviceId, ejsConfig.templateId, {
-      to_email: cleanTo,
+  // Send sequentially — avoids rate limiting and EmailJS parallel send issues
+  const sendNext = (index) => {
+    if (index >= validRecipients.length) {
+      showBanner(`✅ Alert sent to ${validRecipients.length} recipient(s).`, "success");
+      render();
+      return;
+    }
+    const to = validRecipients[index];
+    emailjs.send(ejsConfig.serviceId, ejsConfig.templateId, {
+      to_email: to,
       subject:  payload.subject,
       body:     payload.body,
-    }).catch(err => {
-      // Return error but don't throw - allow other emails to send
-      return Promise.reject(err);
-    });
-  });
-
-  Promise.allSettled(sends)
-    .then(results => {
-      const succeeded = results.filter(r => r.status === "fulfilled").length;
-      const failed = results.filter(r => r.status === "rejected").length;
-
-      btn.textContent = originalContent;
-      btn.classList.remove("dim");
-      btn.disabled = false;
-
-      if (succeeded > 0) {
-        const msg = failed > 0
-          ? `✅ Sent to ${succeeded}/${validRecipients.length} recipients. ${failed} failed.`
-          : `✅ Alert sent to ${succeeded} recipient(s).`;
-        showBanner(msg, succeeded === validRecipients.length ? "success" : "info");
-      } else {
-        showBanner(`⚠️ Failed to send alerts. Please try again.`, "error");
-      }
-      
-      render();
     })
+    .then(() => sendNext(index + 1))
     .catch(err => {
-      btn.textContent = originalContent;
-      btn.classList.remove("dim");
-      btn.disabled = false;
-      showBanner(`⚠️ Error sending alerts: ${err.message || "Unknown error"}`, "error");
+      showBanner(`⚠️ Failed to send to ${to}: ${err.text || err.message || "Unknown error"}`, "error");
       render();
     });
+  };
+
+  sendNext(0);
 }
 
 // ── RENDER ───────────────────────────────────────────────────
@@ -219,18 +171,14 @@ function render() {
   // Email button
   const eb = document.getElementById("email-btn");
   const urgent = records.filter(r => ["expired", "critical"].includes(r.status));
-  if (urgent.length && emailjsInitialized) {
+  if (urgent.length) {
     eb.classList.remove("dim");
     eb.textContent = `📧 Email alert (${urgent.length})`;
     eb.onclick = sendAlertEmail;
-    eb.disabled = false;
   } else {
     eb.classList.add("dim");
-    eb.innerHTML = urgent.length === 0 
-      ? "📧 Email alert" 
-      : "📧 Email alert (unconfigured)";
+    eb.innerHTML = "📧 Email alert";
     eb.onclick = null;
-    eb.disabled = true;
   }
 
   // Apply filter + search
@@ -245,9 +193,61 @@ function render() {
     );
   }
 
+  // Sort
+  const colDefs = [
+    { key: "body",   label: "Reg. Body",       width: "13%", sortable: true },
+    { key: "cat",    label: "Category",        width: "14%", sortable: true },
+    { key: "title",  label: "Title / Service", width: "28%", sortable: true },
+    { key: "expiry", label: "Expiry Date",     width: "13%", sortable: true },
+    { key: "days",   label: "Days Left",       width: "10%", sortable: true },
+    { key: "status", label: "Status",          width: "12%", sortable: true },
+  ];
+
+  // Render sortable header
+  document.getElementById("thead-row").innerHTML = colDefs.map(col => {
+    const isActive = sortKey === col.key;
+    const arrow = isActive ? (sortDir === "asc" ? " ↑" : " ↓") : "";
+    const cls = col.sortable ? "th-sortable" + (isActive ? " th-active" : "") : "";
+    return `<th style="width:${col.width}" class="${cls}" data-col="${col.key}">${col.label}${arrow}</th>`;
+  }).join('');
+
+  document.querySelectorAll('.th-sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortKey === col) {
+        sortDir = sortDir === "asc" ? "desc" : "asc";
+      } else {
+        sortKey = col;
+        sortDir = "asc";
+      }
+      render();
+    });
+  });
+
+  filtered = [...filtered].sort((a, b) => {
+    let av, bv;
+    if (sortKey === "days") {
+      av = a.expiry ? daysLeft(a.expiry) : Infinity;
+      bv = b.expiry ? daysLeft(b.expiry) : Infinity;
+    } else if (sortKey === "expiry") {
+      av = a.expiry || "9999";
+      bv = b.expiry || "9999";
+    } else if (sortKey === "status") {
+      const order = { expired: 0, critical: 1, warning: 2, proc: 3, ok: 4, nodate: 5 };
+      av = order[a.status] ?? 9;
+      bv = order[b.status] ?? 9;
+    } else {
+      av = (a[sortKey] || "").toLowerCase();
+      bv = (b[sortKey] || "").toLowerCase();
+    }
+    if (av < bv) return sortDir === "asc" ? -1 : 1;
+    if (av > bv) return sortDir === "asc" ?  1 : -1;
+    return 0;
+  });
+
   const tbody = document.getElementById("tbody");
   if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="6" class="empty-cell">No records match.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-cell" data-label="">No records match.</td></tr>`;
     return;
   }
 
@@ -261,19 +261,142 @@ function render() {
     const { cls, label } = badgeInfo(r.status);
     const dateDisplay = r.expiry || "—";
     return `<tr>
-      <td class="body-col">${r.body}</td>
-      <td class="cat-col">${r.cat}</td>
+      <td class="body-col" data-label="Body">${r.body}</td>
+      <td class="cat-col" data-label="Category">${r.cat}</td>
       <td class="title-col">${r.title}</td>
-      <td class="date-col">${dateDisplay}</td>
-      <td class="${daysClass}">${daysDisplay}</td>
-      <td><span class="badge ${cls}">${label}</span></td>
+      <td class="date-col" data-label="Expiry">${dateDisplay}</td>
+      <td class="${daysClass}" data-label="Days">${daysDisplay}</td>
+      <td data-label="Status"><span class="badge ${cls}">${label}</span></td>
     </tr>`;
   }).join('');
+
+  // Also refresh timeline if it's visible
+  if (activeView === 'timeline') renderTimeline(filtered);
 }
 
 document.getElementById("search").addEventListener("input", function () {
   searchQ = this.value.trim();
   render();
+});
+
+// ── TIMELINE VIEW ────────────────────────────────────────────
+
+let activeView = "table";
+
+function renderTimeline(filtered) {
+  const container = document.getElementById("timeline-body");
+  const headerEl  = document.getElementById("timeline-header");
+
+  // Work out the window: from start of this month to 18 months out
+  const winStart = TODAY.startOf('month');
+  const winEnd   = winStart.add(18, 'month');
+  const winDays  = winEnd.diff(winStart, 'day');
+
+  // Build month headers
+  const months = [];
+  let m = winStart;
+  while (m.isBefore(winEnd)) {
+    months.push(m);
+    m = m.add(1, 'month');
+  }
+
+  headerEl.innerHTML = `
+    <div class="tl-label-col">Certificate</div>
+    <div class="tl-months">
+      ${months.map(mo => {
+        const isNow = mo.format('YYYY-MM') === TODAY.format('YYYY-MM');
+        return `<div class="tl-month ${isNow ? 'tl-now' : ''}">${mo.format('MMM YY')}</div>`;
+      }).join('')}
+    </div>`;
+
+  // Today line position (%)
+  const todayPct = (TODAY.diff(winStart, 'day') / winDays) * 100;
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="tl-empty">No records match.</div>`;
+    return;
+  }
+
+  // Sort by expiry date ascending (no-date at bottom)
+  const sorted = [...filtered].sort((a, b) => {
+    if (!a.expiry && !b.expiry) return 0;
+    if (!a.expiry) return 1;
+    if (!b.expiry) return -1;
+    return dayjs(a.expiry).diff(dayjs(b.expiry));
+  });
+
+  container.innerHTML = sorted.map(r => {
+    const n = r.expiry ? daysLeft(r.expiry) : null;
+    const tipDays = n === null ? 'No date'
+      : n < 0  ? `Expired ${Math.abs(n)}d ago`
+      : n === 0 ? 'Expires today'
+      : `${n} days left`;
+    const tip = `${r.body} — ${r.title} | ${r.expiry || 'No date'} | ${tipDays}`;
+
+    let barLeft = 0, barWidth = 0;
+
+    if (r.expiry) {
+      const expDay  = dayjs(r.expiry);
+      // Bar starts from today (or window start if already expired) and ends at expiry
+      const barStart = expDay.isBefore(winStart) ? winStart : winStart;
+      const barEnd   = expDay.isAfter(winEnd) ? winEnd : expDay;
+
+      // For active/warning/critical: bar spans from today → expiry
+      // For expired: bar spans from expiry → today (shown as a short stub at left)
+      if (n !== null && n >= 0) {
+        // future: today → expiry
+        const startPct = Math.max(0, (TODAY.diff(winStart, 'day') / winDays) * 100);
+        const endPct   = Math.min(100, (expDay.diff(winStart, 'day') / winDays) * 100);
+        barLeft  = startPct;
+        barWidth = Math.max(0.4, endPct - startPct);
+      } else {
+        // expired: show a stub from expiry date position, width = 1.5%
+        const expPct = (expDay.diff(winStart, 'day') / winDays) * 100;
+        barLeft  = Math.max(0, expPct);
+        barWidth = 1.5;
+      }
+    }
+
+    const barHtml = r.expiry
+      ? `<div class="tl-bar s-${r.status}"
+             style="left:${barLeft.toFixed(2)}%;width:${barWidth.toFixed(2)}%"
+             title="${tip}"></div>`
+      : `<div class="tl-bar s-nodate" style="left:1%;width:6%" title="${tip}"></div>`;
+
+    return `
+      <div class="tl-row">
+        <div class="tl-name">
+          <div class="tl-name-body">${r.body}</div>
+          <div class="tl-name-title" title="${r.title}">${r.title}</div>
+        </div>
+        <div class="tl-track">
+          <div class="tl-today-line" style="left:${todayPct.toFixed(2)}%"></div>
+          ${barHtml}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// Tab switching
+document.querySelectorAll('.view-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeView = btn.dataset.view;
+    document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('view-table').style.display    = activeView === 'table'    ? '' : 'none';
+    document.getElementById('view-timeline').style.display = activeView === 'timeline' ? '' : 'none';
+    if (activeView === 'timeline') {
+      let filtered = activeFilter === "all" ? records : records.filter(r => r.status === activeFilter);
+      if (searchQ) {
+        const q = searchQ.toLowerCase();
+        filtered = filtered.filter(r =>
+          r.body.toLowerCase().includes(q) || r.title.toLowerCase().includes(q) ||
+          r.cat.toLowerCase().includes(q)  || r.service.toLowerCase().includes(q)
+        );
+      }
+      renderTimeline(filtered);
+    }
+  });
 });
 
 // ── UPLOAD LOGIC ─────────────────────────────────────────────
@@ -514,7 +637,7 @@ let _onSettingsSaved = null;
 function openEmailSettingsModal(onSave) {
   _onSettingsSaved = onSave || null;
   const overlay = document.getElementById("email-modal-overlay");
-  document.getElementById("recipients-input").value = (recipients || []).join(", ");
+  document.getElementById("recipients-input").value = recipients.join(", ");
   overlay.style.display = "flex";
 }
 
@@ -528,23 +651,56 @@ document.getElementById("email-modal-cancel").addEventListener("click", () => {
 
 document.getElementById("email-modal-save").addEventListener("click", () => {
   const raw = document.getElementById("recipients-input").value;
-  const newRecipients = raw
-    .split(",")
-    .map(s => s.trim())
-    .filter(s => s && isValidEmail(s));
-  
-  if (!newRecipients.length) {
-    showBanner("⚠️ Please enter at least one valid email address.", "error");
-    return;
-  }
-
-  recipients = newRecipients;
+  // Split on comma or semicolon, clean each entry, keep only valid emails
+  recipients = raw
+    .split(/[,;]/)
+    .map(s => s.trim().replace(/[,;]+$/, ''))
+    .filter(s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s));
   localStorage.setItem("alert_recipients", JSON.stringify(recipients));
   document.getElementById("email-modal-overlay").style.display = "none";
-  showBanner(`✅ ${recipients.length} recipient(s) saved.`, "success");
-  render();
+  if (recipients.length) {
+    showBanner(`✅ ${recipients.length} recipient(s) saved: ${recipients.join(", ")}`, "success");
+  } else {
+    showBanner("⚠️ No valid email addresses found. Please check the format.", "error");
+  }
   if (_onSettingsSaved) _onSettingsSaved();
 });
+
+// ── AUTO-ALERT PROMPT ────────────────────────────────────────
+
+function checkAutoAlertPrompt() {
+  const expired  = records.filter(r => r.status === "expired");
+  const critical = records.filter(r => r.status === "critical");
+  const urgent   = [...expired, ...critical];
+
+  if (!urgent.length) return; // nothing urgent — stay quiet
+
+  // Only prompt once per calendar day
+  const todayStr = TODAY.format("YYYY-MM-DD");
+  const lastPrompt = localStorage.getItem("last_alert_prompt");
+  if (lastPrompt === todayStr) return;
+
+  // Build the message
+  const parts = [];
+  if (expired.length)  parts.push(`${expired.length} expired`);
+  if (critical.length) parts.push(`${critical.length} expiring within 7 days`);
+  const msg = `⚠️ ${parts.join(" and ")} — send an alert email to your recipients?`;
+
+  const promptEl = document.getElementById("alert-prompt");
+  document.getElementById("alert-prompt-msg").textContent = msg;
+  promptEl.style.display = "flex";
+
+  document.getElementById("alert-prompt-send").onclick = () => {
+    promptEl.style.display = "none";
+    localStorage.setItem("last_alert_prompt", todayStr);
+    sendAlertEmail();
+  };
+
+  document.getElementById("alert-prompt-dismiss").onclick = () => {
+    promptEl.style.display = "none";
+    localStorage.setItem("last_alert_prompt", todayStr);
+  };
+}
 
 // ── INIT — load data.json then render ────────────────────────
 fetch("data.json")
@@ -553,15 +709,11 @@ fetch("data.json")
     return res.json();
   })
   .then(data => {
-    if (data.emailjs) {
-      const initSuccess = initEmailJS(data.emailjs);
-      if (!initSuccess) {
-        console.warn("Email alerts disabled due to configuration issues");
-      }
-    }
+    if (data.emailjs) initEmailJS(data.emailjs);
     RAW = data.certifications;
     RAW.forEach((r, i) => records.push({ ...r, id: i, status: computeStatus(r) }));
     render();
+    checkAutoAlertPrompt();
   })
   .catch(err => {
     document.getElementById("tbody").innerHTML =
