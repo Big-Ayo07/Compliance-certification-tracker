@@ -37,6 +37,15 @@
       <!-- Upload feedback banner -->
       <div id="upload-banner" style="display:none; margin-bottom:16px; padding:10px 14px; border-radius:8px; font-size:13px; align-items:center; justify-content:space-between; gap:10px;"></div>
 
+      <!-- Auto-alert prompt banner -->
+      <div id="alert-prompt" style="display:none; margin-bottom:16px; padding:12px 16px; border-radius:8px; font-size:13px; align-items:center; justify-content:space-between; gap:12px; background:rgba(239,68,68,.1); color:#f87171; border:1px solid rgba(239,68,68,.25);">
+        <span id="alert-prompt-msg"></span>
+        <div style="display:flex; gap:8px; flex-shrink:0;">
+          <button id="alert-prompt-send" style="padding:5px 14px; border-radius:6px; border:none; background:#ef4444; color:#fff; font-size:12px; font-weight:600; cursor:pointer;">Send alert now</button>
+          <button id="alert-prompt-dismiss" style="padding:5px 12px; border-radius:6px; border:1px solid rgba(239,68,68,.3); background:none; color:#f87171; font-size:12px; cursor:pointer;">Dismiss</button>
+        </div>
+      </div>
+
       <!-- Column mapping modal -->
       <div id="modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100; align-items:center; justify-content:center;">
         <div id="modal" style="background:#0d1526; border:1px solid #1a2540; border-radius:12px; padding:1.5rem; width:480px; max-width:95vw; box-shadow:0 16px 48px rgba(0,0,0,0.5);">
@@ -83,21 +92,30 @@
         <div class="filters" id="filters"></div>
       </div>
 
+      <!-- View tabs -->
+      <div class="view-tabs">
+        <button class="view-tab active" data-view="table">☰ Table</button>
+        <button class="view-tab" data-view="timeline">▬ Timeline</button>
+      </div>
+
       <!-- Certifications table -->
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:13%">Reg. Body</th>
-              <th style="width:14%">Category</th>
-              <th style="width:28%">Title / Service</th>
-              <th style="width:13%">Expiry Date</th>
-              <th style="width:10%">Days Left</th>
-              <th style="width:12%">Status</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
+      <div id="view-table">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr id="thead-row"></tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Timeline / Gantt view -->
+      <div id="view-timeline" style="display:none;">
+        <div class="timeline-wrap">
+          <div class="timeline-header" id="timeline-header"></div>
+          <div class="timeline-body" id="timeline-body"></div>
+        </div>
       </div>
 
       <!-- Legend -->
