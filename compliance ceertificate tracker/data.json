@@ -239,6 +239,23 @@
       "rawStatus": "ACTIVE",
       "expiry": "2026-12-31"
     },
+     {
+      "body": "NUPRC",
+      "cat": "—",
+      "title": "Non Destructive testing(Normal)",
+      "service": "Offshore Pipeline Layering",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-05-25"
+    },
+    
+    {
+      "body": "NUPRC",
+      "cat": "—",
+      "title": "Non Destructive testing(Radioactive source)",
+      "service": "Offshore Pipeline Layering",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-05-25"
+    },
     {
       "body": "GROUP LIFE INSURANCE",
       "cat": "—",
