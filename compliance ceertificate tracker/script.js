@@ -428,7 +428,7 @@ function showBanner(msg, type) {
   }[type];
   b.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:1rem; padding:10px 14px; border-radius:8px; font-size:13px; background:${colors.bg}; [...]
   b.innerHTML = `<span>${msg}</span><button onclick="document.getElementById('upload-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:inherit;[...]
-}
+
 
 function hideBanner() {
   document.getElementById("upload-banner").style.display = "none";
