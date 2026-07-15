@@ -63,6 +63,22 @@
       "rawStatus": "ACTIVE",
       "expiry": "2026-07-28"
     },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "calibration",
+      "service": "Calibration of Underground Storage Tanks of Retail outlet",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-14"
+    },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "calibration",
+      "service": "Calibration of Above Ground Storage Tanks",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-14"
+    },
     {
       "body": "NUPRC",
       "cat": "Major Category",
