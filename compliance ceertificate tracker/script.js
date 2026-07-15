@@ -29,6 +29,16 @@ function badgeInfo(s) {
   }[s];
 }
 
+// Escape text for safe insertion into HTML attributes/content
+function escapeHtml(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // ── STATE ────────────────────────────────────────────────────
 
 // records is populated after data.json loads
@@ -260,13 +270,18 @@ function render() {
     }
     const { cls, label } = badgeInfo(r.status);
     const dateDisplay = r.expiry || "—";
+
+    // Title/Service cell: show title text, but expose the full service description in the title attribute
+    const serviceTitle = (r.service && r.service !== "—") ? escapeHtml(r.service) : "";
+    const titleText = escapeHtml(r.title);
+
     return `<tr>
-      <td class="body-col" data-label="Body">${r.body}</td>
-      <td class="cat-col" data-label="Category">${r.cat}</td>
-      <td class="title-col">${r.title}</td>
-      <td class="date-col" data-label="Expiry">${dateDisplay}</td>
-      <td class="${daysClass}" data-label="Days">${daysDisplay}</td>
-      <td data-label="Status"><span class="badge ${cls}">${label}</span></td>
+      <td class="body-col" data-label="Body">${escapeHtml(r.body)}</td>
+      <td class="cat-col" data-label="Category">${escapeHtml(r.cat)}</td>
+      <td class="title-col" title="${serviceTitle}">${titleText}</td>
+      <td class="date-col" data-label="Expiry">${escapeHtml(dateDisplay)}</td>
+      <td class="${daysClass}" data-label="Days">${escapeHtml(daysDisplay)}</td>
+      <td data-label="Status"><span class="badge ${cls}">${escapeHtml(label)}</span></td>
     </tr>`;
   }).join('');
 
@@ -360,14 +375,17 @@ function renderTimeline(filtered) {
     const barHtml = r.expiry
       ? `<div class="tl-bar s-${r.status}"
              style="left:${barLeft.toFixed(2)}%;width:${barWidth.toFixed(2)}%"
-             title="${tip}"></div>`
-      : `<div class="tl-bar s-nodate" style="left:1%;width:6%" title="${tip}"></div>`;
+             title="${escapeHtml(tip)}"></div>`
+      : `<div class="tl-bar s-nodate" style="left:1%;width:6%" title="${escapeHtml(tip)}"></div>`;
+
+    // Include service in the timeline title tooltip as well
+    const timelineTitleAttr = escapeHtml(r.title + (r.service && r.service !== "—" ? ' — ' + r.service : ''));
 
     return `
       <div class="tl-row">
         <div class="tl-name">
-          <div class="tl-name-body">${r.body}</div>
-          <div class="tl-name-title" title="${r.title}">${r.title}</div>
+          <div class="tl-name-body">${escapeHtml(r.body)}</div>
+          <div class="tl-name-title" title="${timelineTitleAttr}">${escapeHtml(r.title)}</div>
         </div>
         <div class="tl-track">
           <div class="tl-today-line" style="left:${todayPct.toFixed(2)}%"></div>
@@ -408,8 +426,8 @@ function showBanner(msg, type) {
     error:   { bg: "rgba(239,68,68,.1)",  color: "#f87171", border: "rgba(239,68,68,.25)"  },
     info:    { bg: "rgba(99,102,241,.1)", color: "#a5b4fc", border: "rgba(99,102,241,.25)" },
   }[type];
-  b.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:1rem; padding:10px 14px; border-radius:8px; font-size:13px; background:${colors.bg}; color:${colors.color}; border:0.5px solid ${colors.border};`;
-  b.innerHTML = `<span>${msg}</span><button onclick="document.getElementById('upload-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:inherit;line-height:1;">×</button>`;
+  b.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:1rem; padding:10px 14px; border-radius:8px; font-size:13px; background:${colors.bg}; [...]
+  b.innerHTML = `<span>${msg}</span><button onclick="document.getElementById('upload-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:inherit;[...]
 }
 
 function hideBanner() {
