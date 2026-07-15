@@ -426,9 +426,10 @@ function showBanner(msg, type) {
     error:   { bg: "rgba(239,68,68,.1)",  color: "#f87171", border: "rgba(239,68,68,.25)"  },
     info:    { bg: "rgba(99,102,241,.1)", color: "#a5b4fc", border: "rgba(99,102,241,.25)" },
   }[type];
-  b.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:1rem; padding:10px 14px; border-radius:8px; font-size:13px; background:${colors.bg}; 
-  b.innerHTML = `<span>${msg}</span><button onclick="document.getElementById('upload-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:inherit;
- }
+   b.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:1rem; padding:10px 14px; border-radius:8px; font-size:13px; background:${colors.bg}; color:${colors.color}; border:0.5px solid ${colors.border};`;
+  b.innerHTML = `<span>${msg}</span><button onclick="document.getElementById('upload-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:inherit;line-height:1;">×</button>`;
+}
+
 
 function hideBanner() {
   document.getElementById("upload-banner").style.display = "none";
