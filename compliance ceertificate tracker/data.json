@@ -13,7 +13,31 @@
       "title": "Installation and Maintenance Services",
       "service": "Mechanical Install/Maintenance & Material",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-22"
+      "expiry": "2027-07-23"
+    },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Water Borehole Drilling",
+      "service": "Borehole Drilling",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-22"
+    },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Major Welding and fabrication",
+      "service": "REHABILITATION/UPGRADE/MINOR WORKS",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-22"
+    },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Major Civil",
+      "service": "REHABILITATION/UPGRADE/MINOR WORKS",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-22"
     },
     {
       "body": "NMDPRA",
