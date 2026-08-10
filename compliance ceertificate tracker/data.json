@@ -45,7 +45,7 @@
       "title": "Facilities & Equipment Installation Services",
       "service": "On-/Offshore Facilities, Process Facilities & Platforms Installation/Upgrade",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-28"
+      "expiry": "2027-08-05"
     },
     {
       "body": "NMDPRA",
@@ -53,7 +53,7 @@
       "title": "Facility Maintenance",
       "service": "Pipeline Maintenance & Equipment Refurbishment",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-28"
+      "expiry": "2027-08-05"
     },
     {
       "body": "NMDPRA",
@@ -63,13 +63,29 @@
       "rawStatus": "ACTIVE",
       "expiry": "2027-07-30"
     },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Engineering and Technical Services and Study",
+      "service": "Major Mechanical",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-31"
+    },
+     {
+      "body": "NMDPRA",
+      "cat": "Major Category",
+      "title": "Consultancy",
+      "service": "Major Mechanical",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-07-31"
+    },
     {
       "body": "NMDPRA",
       "cat": "Major Category",
       "title": "Equipment and Material Supply Services",
       "service": "Mechanical Parts — Valves, Nozzles, Flanges, Seals, O-rings, Bolts etc.",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-23"
+      "expiry": "2027-07-31"
     },
     {
       "body": "NMDPRA",
@@ -85,7 +101,7 @@
       "title": "Manpower Supply",
       "service": "Administrative, Support & Engineering/Technical Staff Supply",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-28"
+      "expiry": "2027-07-31"
     },
      {
       "body": "NMDPRA",
@@ -181,7 +197,7 @@
       "title": "Waste Management Services",
       "service": "Tank Vessel Cleaning",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-07-28"
+      "expiry": "2027-07-31"
     },
     {
       "body": "NUPRC",
