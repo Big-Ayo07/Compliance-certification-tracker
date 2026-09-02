@@ -57,6 +57,14 @@
     },
     {
       "body": "NMDPRA",
+      "cat": "Specialized Category",
+      "title": "Facility Maintenance",
+      "service": "Pipeline Maintenance & Cathodic Protection and Coating ",
+      "rawStatus": "ACTIVE",
+      "expiry": "2027-09-02"
+    },
+    {
+      "body": "NMDPRA",
       "cat": "Major Category",
       "title": "Engineering and Technical Services",
       "service": "Major Mechanical",
@@ -93,7 +101,7 @@
       "title": "Inspection and Certification Services",
       "service": "Safety Critical Equipment, All Valves (RV, PSV, PCV, PVCV, BDV, ESD, HIPPS etc.)",
       "rawStatus": "ACTIVE",
-      "expiry": "2026-08-26"
+      "expiry": "2027-08-28"
     },
     {
       "body": "NMDPRA",
