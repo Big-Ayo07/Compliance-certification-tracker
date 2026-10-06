@@ -327,6 +327,22 @@
       "service": "—",
       "rawStatus": "ACTIVE",
       "expiry": "2027-03-01"
+    },
+      {
+      "body": "OANDO",
+      "cat": "contract",
+      "title": "Invitation to tender (OANDO)",
+      "service": "OANDO",
+      "rawStatus": "ATTENTION REQUIRED",
+      "expiry": "2026-10-06"
+    },
+    {
+      "body": "pipeline",
+      "cat": "contract",
+      "title": "pipeline infrastructure",
+      "service": "--",
+      "rawStatus": "ATTENTION REQUIRED",
+      "expiry": "2026-10-08"
     }
   ]
 }
