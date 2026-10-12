@@ -331,18 +331,26 @@
       {
       "body": "OANDO",
       "cat": "contract",
-      "title": "Invitation to tender (OANDO)",
-      "service": "OANDO",
+      "title": "Request for expression of interest EOI (OANDO)",
+      "service": "Provision of NDT in land area location",
       "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "2026-10-06"
+      "expiry": "2026-10-12"
     },
     {
-      "body": "pipeline",
-      "cat": "contract",
-      "title": "pipeline infrastructure",
-      "service": "--",
+      "body": "Aradel", 
+      "cat": "Questionaire",
+      "title": "Aradel Certificate Modular Questionaire",
+      "service": "complete questionaire for Aradel holdings",
       "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "2026-10-08"
+      "expiry": "2026-11-02"
+    }
+     {
+      "body": "—", 
+      "cat": "ITT/RFQ",
+      "title": "INVITATION TO TENDER",
+      "service": "Invitation to tender for repair and servicing of LATHE, Milling and Drilling machines in OERNL OBOB and KWALE gas plan workshops",
+      "rawStatus": "ATTENTION REQUIRED",
+      "expiry": "2026-10-15"
     }
   ]
 }
