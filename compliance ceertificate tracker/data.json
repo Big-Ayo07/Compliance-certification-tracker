@@ -329,20 +329,28 @@
       "expiry": "2027-03-01"
     },
       {
-      "body": "OANDO",
+      "body": "AGPC",
       "cat": "contract",
-      "title": "Request for expression of interest EOI (OANDO)",
-      "service": "Provision of NDT in land area location",
+      "title": "[AGPC]contract and procurement (ANOH) Gas procurement company limited) 12PM!!",
+      "service": "Request for Quotation for procurement of mechanical spares for maintenance activities (GOMA & SEKO)",
       "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "2026-10-12"
+      "expiry": "2026-10-23"
     },
     {
       "body": "Aradel", 
-      "cat": "Questionaire",
+      "cat": "Questionnaire",
       "title": "Aradel Certificate Modular Questionaire",
-      "service": "complete questionaire for Aradel holdings",
+      "service": "complete questionnaire for Aradel holdings",
       "rawStatus": "ATTENTION REQUIRED",
       "expiry": "2026-11-02"
+    },
+     {
+      "body": "NNPC", 
+      "cat": "Questionaire",
+      "title": " Questionaire Update for supplier registration on ARIBA",
+      "service": "QUESTIONNAIRE!!",
+      "rawStatus": "ATTENTION REQUIRED",
+      "expiry": ""
     },
      {
       "body": "—", 
