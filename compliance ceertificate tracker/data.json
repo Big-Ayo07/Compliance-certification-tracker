@@ -2,7 +2,7 @@
   "company": "AIRYOLK Nigeria Limited",
   "emailjs": {
     "serviceId":  "service_zq4syrg",
-    "templateId": "template_jebn2le",
+    "templateId": "template_jebn2le", 
     "publicKey":  "AtzSPbBSgWfsW95Fw",
     "recipients": ["compliance@airyolk.com"]
   },
