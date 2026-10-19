@@ -359,6 +359,14 @@
       "service": "Invitation to tender for repair and servicing of LATHE, Milling and Drilling machines in OERNL OBOB and KWALE gas plan workshops",
       "rawStatus": "ATTENTION REQUIRED",
       "expiry": "2026-10-15"
+    },
+     {
+      "body": "AIRYOLK EQUIPMENT", 
+      "cat": "maintenance reminder",
+      "title": " Reminder for maintenance of equipments",
+      "service": "lincoln weldng machine, generators, compressors etc",
+      "rawStatus": "ATTENTION REQUIRED",
+      "expiry": ""
     }
   ]
 }
