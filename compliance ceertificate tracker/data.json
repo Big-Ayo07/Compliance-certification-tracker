@@ -216,14 +216,6 @@
       "expiry": "2027-09-03"
     },
     {
-      "body": "NUPRC",
-      "cat": "Specialized Category",
-      "title": "Onshore Pipeline Laying",
-      "service": "Laying of Oil & Gas Pipeline; Pipeline Fabrication/Construction",
-      "rawStatus": "ACTIVE",
-      "expiry": "."
-    },
-    {
       "body": "NCEC",
       "cat": "—",
       "title": "Procurement and Supply",
@@ -248,14 +240,6 @@
       "expiry": "2026-11-26"
     },
     {
-      "body": "NOGIC JQS",
-      "cat": "—",
-      "title": "JQS Prequalification",
-      "service": "—",
-      "rawStatus": "ACTIVE",
-      "expiry": "."
-    },
-    {
       "body": "COREN",
       "cat": "—",
       "title": "COREN Registration",
@@ -278,14 +262,6 @@
       "service": "—",
       "rawStatus": "ACTIVE",
       "expiry": "2026-12-31"
-    },
-    {
-      "body": "RECRUITERS PERMIT",
-      "cat": "—",
-      "title": "Recruiters Permit",
-      "service": "—",
-      "rawStatus": "ACTIVE",
-      "expiry": "2027-03-12"
     },
      {
       "body": "INTERNATIONAL RECRUITERS PERMIT",
