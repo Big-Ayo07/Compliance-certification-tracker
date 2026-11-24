@@ -296,43 +296,11 @@
       "rawStatus": "ACTIVE",
       "expiry": "2027-03-01"
     },
-      {
-      "body": "AGPC",
-      "cat": "contract",
-      "title": "[AGPC]contract and procurement (ANOH) Gas procurement company limited) 12PM!!",
-      "service": "Request for Quotation for procurement of mechanical spares for maintenance activities (GOMA & SEKO)",
-      "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "2026-10-23"
-    },
-    {
-      "body": "Aradel", 
-      "cat": "Questionnaire",
-      "title": "Aradel Certificate Modular Questionaire",
-      "service": "complete questionnaire for Aradel holdings",
-      "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "2026-11-02"
-    },
      {
       "body": "NNPC", 
       "cat": "Questionaire",
       "title": " Questionaire Update for supplier registration on ARIBA",
       "service": "QUESTIONNAIRE!!",
-      "rawStatus": "ATTENTION REQUIRED",
-      "expiry": ""
-    },
-     {
-      "body": "INVITATION TO TENDER", 
-      "cat": "ITT/RFQ",
-      "title": "INVITATION TO TENDER",
-      "service": "Invitation to tender for repair and servicing of LATHE, Milling and Drilling machines in OERNL OBOB and KWALE gas plan workshops 4pm!!!",
-      "rawStatus": "ATTENTION REQUIRED",
-      "expiry": "22/10/2026"
-    },
-     {
-      "body": "AIRYOLK EQUIPMENT", 
-      "cat": "maintenance reminder",
-      "title": " Reminder for maintenance of equipments",
-      "service": "lincoln weldng machine, generators, compressors etc",
       "rawStatus": "ATTENTION REQUIRED",
       "expiry": ""
     }
